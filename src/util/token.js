@@ -1,31 +1,27 @@
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
-const checktoken = async (token, id, key) => lwt.verife(token, key, (err, decoded) =>{
-   
-   
-const checkToken = async (token, id, key)  => {
-    try{
-        let decoded = await jwt.verify(token,  key);
+const checkToken = async (token, id, key) => {
+    try{    
+        let decoded = await jwt.verify(token, key);
         if(decoded){
-            if(decoded.id==id) return true;
+            if(decoded.id==id) 
+            return true;
         }
         return false;
     }catch(e){
+        console.log(e);
         return false
     }
-}
-});
+};
 
-
-const setToken = async (id, key) => {
-    console.log(id);
-    if(id) {
-        return jwt.sign({id}, key, { expiresIn: 280800});
+const setToken = (id, key) => {
+    if (id) {
+        return jwt.sign({id }, key, { expiresIn: 28800 });
     }
     return false;
 };
 
 module.exports = {
-    checktoken,
+    checkToken,
     setToken,
-};
+}
