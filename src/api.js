@@ -1,12 +1,12 @@
 const express = require("express");
 const app = express();
-// const cors = require('cors');
+const cors = require('cors');
 
 const token = require("./util/token.js");
 const salaController = require("./controllers/salaController.js");
 const usuarioController = require("./controllers/usuarioController.js");
 
-// app.use(cors());
+app.use(cors());
 app.use(express.urlencoded({extended : true}));
 app.use(express.json());
 
